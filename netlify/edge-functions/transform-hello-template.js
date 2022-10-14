@@ -2,7 +2,7 @@ export default async (request, context) => {
   const url = new URL(request.url);
 
   // Look for the "?method=transform" query parameter, and return if we don't find it
-  if (url.searchParams.get("method") !== "transform") {
+  if (url.searchParams.get("first_name") !== "transform") {
     return;
   }
 
@@ -15,10 +15,10 @@ export default async (request, context) => {
   const regex = /LOCATION_UNKNOWN/i;
 
   // Get the location from the context object
-  const location = `${context.geo.city}, ${context.geo.country.name}`;
+  const image = `${context.geo.city}, ${context.geo.country.name}`;
 
   // Replace the content with the current location
-  const updatedPage = page.replace(regex, location);
+  const updatedPage = page.replace(regex, image);
 
   // Return the response
   return new Response(updatedPage, response);
